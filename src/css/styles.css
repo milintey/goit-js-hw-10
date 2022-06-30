@@ -18,3 +18,12 @@ body {
     max-width: 320px;
     margin-bottom: 16px;
 }
+
+.countrys {
+    display: flex;
+
+}
+
+.country__textt {
+    margin: 0 0 15 15;
+}
