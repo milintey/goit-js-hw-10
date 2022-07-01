@@ -9,6 +9,7 @@ const divContainer = document.querySelector('.country-info');
 
 input.addEventListener('input', debounce(onCountry, DEBOUNCE_DELAY));
 
+
 function onCountry(event) {
     const targetCountry = event.target.value.trim();
     fetchCountries(targetCountry).then(country => {
@@ -21,8 +22,6 @@ function onCountry(event) {
             divContainer.innerHTML = countryFlagAndName(country);
         } else if (country.length === 1) {
             divContainer.innerHTML = countryCardsMarkup(country);
-        } else if (country.status === 404 || country.status === 500) {
-            Notiflix.Notify.failure("Oops, there is no country with that name");
         }
     });
 }
@@ -40,7 +39,7 @@ function countryCardsMarkup(country) {
         <p class="country__text">Население: ${population}</p>
         <p class="country__text">Язык: ${Object.values(languages).join(', ')}</p>
     </div>`
-    }).join();
+    }).join('');
 }
 
 function countryFlagAndName(country) {
